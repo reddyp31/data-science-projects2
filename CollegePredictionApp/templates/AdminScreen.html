@@ -1,0 +1,133 @@
+{% load static %}
+<html>
+<head>
+<title>Prediction of Admission in Engineering College</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+<style>
+	body {
+		background-color: #f2f2f2;
+		font-family: Arial, sans-serif;
+	}
+
+	.main {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+
+	.header {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.logo h1 {
+		font-size: 36px;
+		margin: 0;
+		padding: 0;
+		color: #333;
+	}
+
+	.logo span {
+		color: #666;
+		font-size: 14px;
+                color:black;
+	}
+
+	.content_bg {
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	}
+
+	.menu_nav ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+	}
+
+	.menu_nav ul li {
+		display: inline-block;
+		margin-right: 20px;
+	}
+
+	.menu_nav ul li a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 16px;
+		transition: color 0.3s ease;
+		background-color:#333333;
+	}
+
+	.menu_nav ul li a:hover {
+		color: #666;
+	}
+
+	.hbg img {
+		width: 100%;
+		height: auto;
+	}
+
+	th {
+		background-color: #b0f8ff;
+		border: 1px solid #000;
+	}
+
+	td {
+		background-color: #dbcbf2;
+		border: 1px solid #000;
+	}
+
+	tr td:nth-child(11) {
+		background-color: #f2cbd3;
+		border: 1px solid #000;
+	}
+	center{
+		width:740px;
+		overflow:scroll;
+}
+
+	table {
+		border-collapse: collapse;
+		width: 740px;
+		overflow:hidden;
+		font-size:15px;
+	}
+
+	table td, table th {
+		border: 1px solid #000;
+		padding: 8px;
+		text-align: left;
+	}
+
+	table th {
+		background-color: #b0f8ff;
+	}
+</style>
+</head>
+<body>
+	<div class="main">
+		<div class="header">
+			<div class="logo">
+				<h1><span style="font-size: 48px;">Prediction of Admission in Engineering College</span><small></small></h1>
+			</div>
+		</div>
+		<div class="content">
+			<div class="content_bg">
+				<div class="menu_nav">
+					<ul>
+						<li><a href="{% url 'LoadDataset' %}" style="color: #fff;">Load College Admission Dataset</a></li>
+						<li><a href="{% url 'TrainML' %}" style="color: #fff;">Train Machine Learning Algorithms</a></li>
+						<li style="color:#000000;"><a href="{% url 'index' %}">Logout</a></li>
+					</ul>
+				</div>
+				<div class="hbg"><img src="{% static 'images/header_images.jpg' %}" width="915" height="286" alt="" /></div>
+
+				<font size="3" color="black"><center>{{ data|safe }}</center></font>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+{% load static %}
+<html>
+<head>
+<title>Prediction of Admission in Engineering College</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+<script language="javascript">
+	function validate(formObj)
+	{
+	if(formObj.t1.value.length==0)
+	{
+	alert("Please enter your username");
+	formObj.t1.focus();
+	return false;
+	}
+	if(formObj.t2.value.length==0)
+	{
+	alert("Please enter your password");
+	formObj.t2.focus();
+	return false;
+	}
+	
+	if(formObj.t3.value.length==0)
+	{
+	alert("Please enter your contact number");
+	formObj.t3.focus();
+	return false;
+	}
+	if(isNaN(formObj.t3.value)){
+		alert("Contact number must be numeric");
+		formObj.t3.focus();
+		return false;
+	}
+	if(formObj.t5.value.length==0)
+	{
+	alert("Please enter your email ID");
+	formObj.t5.focus();
+	return false;
+	}
+	var filter = /^([a-zA-Z0-9_\.\-])+\@([a-z]+\.)+(com)+$/;
+    if (!filter.test(formObj.t5.value)) {
+		window.alert('Please enter a valid email address');
+		formObj.t5.focus();
+		return false;
+	}
+	if(formObj.t6.value.length==0)
+	{
+	alert("Please enter your address");
+	formObj.t6.focus();
+	return false;
+	}
+	return true;
+	}
+	</script>
+	 <script language="javascript" type="text/javascript" src="datetimepicker.js">
+</script>
+<style>
+	body {
+		background-color: #f2f2f2;
+		font-family: Arial, sans-serif;
+	}
+
+	.main {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+
+	.header {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.logo h1 {
+		font-size: 48px;
+		margin: 0;
+		padding: 0;
+		color: #333;
+	}
+
+	.logo span {
+		color: #666;
+		font-size: 48px;
+                color:black;
+                color:black;
+	}
+
+	.content_bg {
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	}
+
+	.menu_nav ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+	}
+
+	.menu_nav ul li {
+		display: inline-block;
+		margin-right: 20px;
+	}
+
+	.menu_nav ul li a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 16px;
+		transition: color 0.3s ease;
+	}
+
+	.menu_nav ul li a:hover {
+		color: #ccc;
+	}
+
+	.hbg img {
+		width: 100%;
+		height: auto;
+	}
+
+	form {
+		max-width: 400px;
+		margin: 0 auto;
+		text-align: center;
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	}
+
+	form h2 {
+		font-size: 24px;
+		margin-bottom: 20px;
+		color: #333;
+	}
+
+	form input[type="text"],
+	form input[type="password"],
+	form input[type="email"],
+	form input[type="tel"] {
+		width: 100%;
+		padding: 10px;
+		margin-bottom: 15px;
+		border-radius: 5px;
+		border: 1px solid #ccc;
+		font-size: 16px;
+	}
+
+	form select {
+		width: 100%;
+		padding: 15px;
+		margin-bottom: 15px;
+		border-radius: 5px;
+		border: 1px solid #ccc;
+		font-size: 16px;
+	}
+
+	form input[type="submit"] {
+		width: 100%;
+		padding: 10px;
+		border-radius: 5px;
+		border: none;
+		background-color: #333;
+		color: #fff;
+		font-size: 16px;
+		cursor: pointer;
+	}
+
+	form input[type="submit"]:hover {
+		background-color: #666;
+	}
+
+	form font {
+		font-size: 14px;
+		color: red;
+	}
+</style>
+</head>
+
+<body>
+	<div class="main">
+		<div class="header">
+			<div class="logo">
+				<h1><span>Prediction of Admission in Engineering College</span><small></small></h1>
+			</div>
+		</div>
+		<div class="content">
+			<div class="content_bg">
+				<div class="menu_nav">
+					<ul>
+						<li><a href="{% url 'index' %}" style="color: #fff;">Home</a></li>
+						<li><a href="{% url 'AdminLogin' %}" style="color: #fff;">Admin Login</a></li>
+						<li><a href="{% url 'UserLogin' %}" style="color: #fff;">User Login</a></li>
+						<li><a href="{% url 'Signup' %}" style="color: #fff;">New User Signup Here</a></li>
+					</ul>
+				</div>
+				<div class="hbg"><img src="{% static 'images/header_images.jpg' %}" width="915" height="286" alt="" /></div>
+				<center>
+					<form name="f1" method="post" action={% url 'SignupAction' %} onsubmit="return validate(this);">
+						{% csrf_token %}
+						<br />
+						<h2>New User Signup</h2>
+						<font size="" color="red">
+							<center>{{ data|safe }}</center>
+						</font>
+						<table align="center" width="75%">
+							<tr>
+							
+								<td><input type="text" name="t1" style="font-family: Comic Sans MS" size="30" placeholder="User Name"></td>
+							</tr>
+							<tr>
+					
+								<td><input name="t2" type="password" size="30" placeholder="Password"></td>
+							</tr>
+							<tr>
+								
+								<td><input name="t3" type="tel" size="30" placeholder="Contact No"></td>
+							</tr>
+							<tr>
+								
+								<td>
+									<select name="t4" style="font-family: Comic Sans MS"placeholder="Gender">
+										<option value="Male">Male</option>
+										<option value="Female">Female</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								
+								<td><input type="email" name="t5" style="font-family: Comic Sans MS" size="50" placeholder="Email"></td>
+							</tr>
+							<tr>
+								
+								<td><input name="t6" type="text" size="70" placeholder="Address"></td>
+							</tr>
+							<tr>
+								
+								<td><input type="submit" value="Submit"></td>
+							</tr>
+						</table>
+					</form>
+				</center>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

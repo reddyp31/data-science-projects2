@@ -1,0 +1,226 @@
+{% load static %}
+<html>
+<head>
+<title>Prediction of Admission in Engineering College</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+<style>
+	body {
+		background-color: #f2f2f2;
+		font-family: Arial, sans-serif;
+	}
+
+	.main {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+
+	.header {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.logo h1 {
+		font-size: 36px;
+		margin: 0;
+		padding: 0;
+		color: #333;
+	}
+
+	.logo span {
+		color: #666;
+		font-size: 14px;
+                color:black;
+	}
+
+	.content_bg {
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	}
+
+	.menu_nav ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+	}
+
+	.menu_nav ul li {
+		display: inline-block;
+		margin-right: 20px;
+	}
+
+	.menu_nav ul li a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 16px;
+		transition: color 0.3s ease;
+	}
+
+	.menu_nav ul li a:hover {
+		color: #666;
+	}
+
+	.hbg img {
+		width: 100%;
+		height: auto;
+	}
+
+	form {
+		margin-top: 20px;
+	}
+
+	form table {
+		width: 50%;
+	}
+
+	form table td {
+		padding: 10px;
+	}
+
+	form table tr:first-child {
+		background-color: #f2f2f2;
+	}
+
+	form table tr td:first-child {
+		width: 30%;
+		text-align: right;
+		font-weight: bold;
+	}
+
+	form table tr td:last-child {
+		width: 70%;
+	}
+
+	form input[type="text"],
+	form select {
+		width: 100%;
+		padding: 8px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+		font-family: Arial, sans-serif;
+	}
+
+	form input[type="submit"] {
+		background-color: #4CAF50;
+		color: white;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-family: Arial, sans-serif;
+	}
+
+	form input[type="submit"]:hover {
+		background-color: #45a049;
+	}
+</style>
+<script language="javascript">
+	function validate(formObj) {
+		if(formObj.t1.value.length==0) {
+			alert("Please Enter Your Rank");
+			formObj.t1.focus();
+			return false;
+		}
+	
+		formObj.actionUpdateData.value="update";
+		return true;
+	}
+</script>
+</head>
+<body>
+	<div class="main">
+		<div class="header">
+			<div class="logo">
+				<h1><span style="font-size: 48px;">Prediction of Admission in Engineering College</span><small></small></h1>
+			</div>
+		</div>
+		<div class="content">
+			<div class="content_bg">
+				<div class="menu_nav">
+					<ul>
+						<li><a href="{% url 'PredictCollege' %}" style="color: #fff;">Predict Your Admission College</a></li>
+						<li><a href="{% url 'index' %}">Logout</a></li>
+					</ul>
+				</div>
+				<div class="hbg"><img src="{% static 'images/header_images.jpg' %}" width="915" height="286" alt="" /></div>
+
+				<center>
+					<form name="f1" method="post" action={% url 'PredictCollegeAction' %} onsubmit="return validate(this);">
+						{% csrf_token %}
+						<br/>
+						<h2><b>Predict College Screen</b></h2>
+						<font size="" color="red"><center>{{ data }}</center></font>
+						<table align="center" width="30%">
+							<tr>
+								
+								<td><input name="t1" type="text" size="15" placeholder="Rank"></td>
+							</tr>
+							<tr>
+								<td>
+									<select name="t2" placeholder="Gender">
+										<option value="F">Female</option>
+										<option value="M">Male</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<select name="t3" placeholder="Caste">
+										<option value="BC_A">BC_A</option>
+										<option value="BC_B">BC_B</option>
+										<option value="BC_C">BC_C</option>
+										<option value="BC_D">BC_D</option>
+										<option value="BC_E">BC_E</option>
+										<option value="OC">OC</option>
+										<option value="SC">SC</option>
+										<option value="ST">ST</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<select name="t4" placeholder="University">
+										<option value="AU">AU</option>
+										<option value="NL">NL</option>
+										<option value="OU">OU</option>
+										<option value="SVU">SVU</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								
+								<td>
+									<select name="t5" placeholder="Branch">
+										<option value="B. PHARMACY (M.P.C. STREAM)">B. PHARMACY (M.P.C. STREAM)</option>
+										<option value="CIVIL ENGINEERING">CIVIL ENGINEERING</option>
+										<option value="COMPUTER ENGINEERING(SOFTWARE ENGINEERING)">COMPUTER ENGINEERING(SOFTWARE ENGINEERING)</option>
+										<option value="COMPUTER SCIENCE AND ENGINEERING">COMPUTER SCIENCE AND ENGINEERING</option>
+										<option value="COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)">COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)</option>
+										<option value="COMPUTER SCIENCE AND ENGINEERING (CYBER SECURITY)">COMPUTER SCIENCE AND ENGINEERING (CYBER SECURITY)</option>
+										 <option value="COMPUTER SCIENCE AND ENGINEERING (DATA SCIENCE)">COMPUTER SCIENCE AND ENGINEERING (DATA SCIENCE)</option>
+										<option value="COMPUTER SCIENCE AND ENGINEERING (IOT)">COMPUTER SCIENCE AND ENGINEERING (IOT)</option>
+										<option value="ELECTRICAL AND ELECTRONICS ENGINEERING">ELECTRICAL AND ELECTRONICS ENGINEERING</option>
+										<option value="ELECTRONICS AND COMMUNICATION ENGINEERING">ELECTRONICS AND COMMUNICATION ENGINEERING</option>
+										<option value="INFORMATION TECHNOLOGY">INFORMATION TECHNOLOGY</option>
+										<option value="MECHANICAL ENGINEERING">MECHANICAL ENGINEERING</option>
+										<option value="MINING ENGINEERING">MINING ENGINEERING</option>
+										<option value="PHARM - D (M.P.C. STREAM)">PHARM - D (M.P.C. STREAM)</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="submit" value="Submit"></td>
+							</tr>
+						</table>
+					</form>
+				</center>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+{% load static %}
+<html>
+<head>
+<title>Prediction of Admission in Engineering College</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+<style>
+	body {
+		background-color: #f2f2f2;
+		font-family: Arial, sans-serif;
+	}
+
+	.main {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+
+	.header {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.logo h1 {
+		font-size: 36px;
+		margin: 0;
+		padding: 0;
+		color: #333;
+	}
+
+	.logo span {
+		color: #666;
+		font-size: 14px;
+	}
+
+	.content_bg {
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	}
+
+	.menu_nav ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+	}
+
+	.menu_nav ul li {
+		display: inline-block;
+		margin-right: 20px;
+	}
+
+	.menu_nav ul li a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 16px;
+		transition: color 0.3s ease;
+	}
+
+	.menu_nav ul li a:hover {
+		color: #666;
+	}
+
+	.hbg img {
+		width: 100%;
+		height: auto;
+	}
+</style>
+</head>
+<body>
+	<div class="main">
+		<div class="header">
+			<div class="logo">
+				<h1><span style="font-size: 48px;">Prediction of Admission in Engineering College</span><small></small></h1>
+			</div>
+		</div>
+		<div class="content">
+			<div class="content_bg">
+				<div class="menu_nav">
+					<ul>
+						<li><a href="{% url 'PredictCollege' %}" style="color: #fff;">Predict Your Admission College</a></li>
+						<li><a href="{% url 'index' %}">Logout</a></li>
+					</ul>
+				</div>
+				<div class="hbg"><img src="{% static 'images/header_images.jpg' %}" width="915" height="286" alt="" /></div>
+
+				<font size="3" color="red"><center>{{ data|safe }}</center></font>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
